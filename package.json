@@ -1,0 +1,32 @@
+{
+    "name": "mean-baseproject",
+    "description": "MEAN Base Project",
+    "version": "2.0.0",
+    "main": "server.js",
+    "author": {
+        "name": "Claudio Moya Tapia",
+        "email": "cm@rayalab.cl"
+    },
+    "dependencies": {
+        "app-module-path": "~1.0.1",
+        "express": "~4.0.0",
+        "express-session": "~1.0.4",
+        "ejs": "~0.8.5",
+        "express-ejs-layouts": "~1.1.0",
+        "mongoose": "~3.8.1",
+        "mongoose-deep-populate":"~0.0.7",
+        "passport": "~0.1.17",
+        "passport-local":"~0.1.6",
+        "passport-facebook": "~1.0.2",
+        "passport-twitter": "~1.0.2",
+        "passport-google-oauth": "~0.1.5",
+        "connect-flash": "~0.1.1",
+        "bcrypt-nodejs": "~0.0.3",
+        "morgan": "~1.0.0",
+        "body-parser": "~1.0.0",
+        "cookie-parser": "~1.0.1",
+        "method-override": "~1.0.2",
+        "moment": "~2.9.0",
+        "jquery-file-upload-middleware": "~0.1.7"
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NodeJS Base project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+              rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </head>
+    <body class="">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <% if (req.isAuthenticated()) { %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/api/post">API Post</a>
+                        </li>
+                        <li>
+                            <a href="/admin/user">Admin User</a>
+                        </li>
+                        <li class="active">
+                            <% if (req.user.google.token) { %>
+                            <a href="/profile">
+                                Welcome 
+                                <strong><%=: req.user.google.name %> (<%=: req.user.google.email %>)</strong>
+                                <small>Google+</small>
+                            </a>
+                            <% } %>
+
+                            <% if (req.user.local.email) { %>
+                            <a href="/profile">
+                                Welcome 
+                                <strong><%=: req.user.local.email %></strong>
+                                <small>Local Login</small>
+                                <br>
+                            </a>
+                            <% } %>
+                        </li>
+                        <li>
+                            <% if (req.user.google.token) { %>
+                            <a href="/auth/google/logout">Logout+</a>
+                            <% } %>
+                            
+                            <% if (req.user.local.email) { %>
+                            <a href="/auth/logout">Logout</a>
+                            <% } %>
+                        </li>
+                    </ul>
+                    <% }else{ %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            Welcome 
+                            <strong>Guest</strong>
+                        </li>
+                    </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Admin layout</p>
+                    <%- body %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li><a href="/#/book/list">List</a></li>
+<li class="active">New</li>
+</ol>
+<div class="panel panel-default">
+<div class="panel-heading">New</div>
+<div class="panel-body">
+<form>
+<input type="hidden" ng-model="book._id" />
+<div class="form-group">
+<label>title</label>
+<input type="text" ng-model="book.title" class="form-control" />
+</div>
+<div class="form-group">
+<label>quantity</label>
+<input type="text" ng-model="book.quantity" class="form-control" />
+</div>
+<div class="form-group">
+<label>release_date</label>
+<input type="text" ng-model="book.release_date" class="form-control" />
+</div>
+<div class="form-group">
+<label>brand_new</label>
+<input type="text" ng-model="book.brand_new" class="form-control" />
+</div>
+<div class="form-group">
+<label>ref_user</label>
+<input type="text" ng-model="book.ref_user" class="form-control" />
+</div>
+<button type="button" class="btn btn-primary" ng-click="actionSubmit()">{{submitTitle}}</button>
+</form>
+</div>
+</div>

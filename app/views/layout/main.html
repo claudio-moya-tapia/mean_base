@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html data-ng-app="angularApp">
+    <head>
+        <meta charset="utf-8">
+        <title>MEAN Base project</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" type="text/css" href="/css/tableDirective.css" >
+        <link rel="stylesheet" type="text/css" href="/libs/blueimp-file-upload/css/jquery.fileupload.css">
+        <link rel="stylesheet" type="text/css" href="/libs/blueimp-file-upload/css/jquery.fileupload-ui.css">
+    </head>
+    <body class="">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <% if (req.isAuthenticated()) { %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <% if (req.user.google_token) { %>
+                            <a href="#/profile">
+                                Welcome 
+                                <strong><%=: req.user.google_name %> (<%=: req.user.google_email %>)</strong>
+                                <small>Google+</small>
+                            </a>
+                            <% } %>
+
+                            <% if (req.user.local_email) { %>
+                            <a href="#/profile">
+                                Welcome 
+                                <strong><%=: req.user.local_email %></strong>
+                                <small>Local Login</small>
+                                <br>
+                            </a>
+                            <% } %>
+                        </li>
+                        <li>
+                            <% if (req.user.local_email) { %>
+                            <a href="/auth/logout">Logout</a>
+                            <% } %>
+                        </li>
+                    </ul>
+                    <% }else{ %>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            Welcome 
+                            <strong>Guest</strong>
+                        </li>
+                    </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <%- body %>
+                    <div ui-view></div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="well well-sm">
+            <p class="text-center">Default layout</p>
+        </div>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script type='text/javascript' src="libs/html5shiv/dist/html5shiv.min.js"></script>
+          <script type='text/javascript' src="libs/respond/dest/respond.min.js"></script>
+        <![endif]-->
+        
+        <!-- Core Libraries -->
+        <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/libs/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/libs/angular-resource/angular-resource.min.js"></script>
+        
+        <!-- Infinite Scroll -->
+        <script type="text/javascript" src="libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+        
+        <!-- File Upload -->
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-load-image/js/load-image.all.min.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-audio.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-video.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
+        <script type="text/javascript" src="/libs/blueimp-file-upload/js/jquery.fileupload-angular.js"></script>
+        
+        <!-- AngularJS App -->
+        <script type="text/javascript" src="/angular/app.js"></script>
+        
+        <!-- Services --> 
+        <script type="text/javascript" src="/angular/services/activeRecordService.js"></script>
+        
+        <!-- Controllers -->
+        <script type="text/javascript" src="/angular/controllers/bookController.js"></script><!-- Created at 2015-04-24T23:15:54.468Z -->
+        <script type="text/javascript" src="/angular/controllers/uploaderController.js"></script>
+        <script type="text/javascript" src="/angular/controllers/indexController.js"></script>
+
+        <!-- Factory -->
+        <script type="text/javascript" src="/angular/factory/bookFactory.js"></script><!-- Created at 2015-04-24T23:15:54.468Z -->
+        
+        <!-- Directives -->
+        <script type="text/javascript" src="/angular/directives/tableDirective.js"></script>
+
+    </body>
+</html>
